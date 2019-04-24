@@ -16,7 +16,11 @@ hidden_checkbox.addEventListener('click', ()=>{
 	}
 })
 user_search.addEventListener('input', (e)=>{
-		
+	if(hidden_checkbox.checked === true){
+		search_incompleted();
+	} else {
+		search_all();
+	}
 })
 
 user_input.addEventListener('keydown', (e)=>{

@@ -94,3 +94,24 @@ const display_complete_only = ()=>{
 	})
 	display_todos(x);
 }
+
+const search_incompleted = ()=>{
+	const x = todos.filter((a)=>{
+		return a.completed === false;
+	})
+	const y = x.filter((a)=>{
+		if(a.text.toLowerCase().includes(user_search.value)){
+			return true
+		}
+	})
+	display_todos(y);
+}
+
+const search_all = ()=>{
+	const y = todos.filter((a)=>{
+		if(a.text.toLowerCase().includes(user_search.value)){
+			return true
+		}
+	})
+	display_todos(y);
+}
