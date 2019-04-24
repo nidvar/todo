@@ -33,7 +33,6 @@ const display_todos = (array)=>{
 		z.addEventListener('click', ()=>{
 			if(z.checked === true){
 				todo_is_completed(a.id);
-				display_complete_only();
 			} else {
 				todo_is_incomplete(a.id);
 			}
@@ -92,15 +91,6 @@ const todo_is_incomplete = (the_id)=>{
 const display_complete_only = ()=>{
 	const x = todos.filter((a)=>{
 		return a.completed === false
-	})
-	display_todos(x);
-}
-
-const search_todos = ()=>{
-	const x = todos.filter((a)=>{
-		if(a.text.includes(user_search.value.toLowerCase())){
-			return true;
-		}
 	})
 	display_todos(x);
 }

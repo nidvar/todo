@@ -16,7 +16,7 @@ hidden_checkbox.addEventListener('click', ()=>{
 	}
 })
 user_search.addEventListener('input', (e)=>{
-		search_todos();
+		
 })
 
 user_input.addEventListener('keydown', (e)=>{
