@@ -1,0 +1,22 @@
+body {
+	margin:0;
+	font-family: 'Raleway', sans-serif;
+	text-align:center;
+}
+h1 {
+	margin:30px;
+}
+nav {
+	height:50px;
+	background-color:black;
+}
+.container {
+	max-width:700px;
+	margin:auto;
+}
+.make-into-button:hover {
+	cursor: pointer;
+}
+.cross-out {
+	text-decoration: line-through;
+}
