@@ -95,3 +95,12 @@ const display_complete_only = ()=>{
 	})
 	display_todos(x);
 }
+
+const search_todos = ()=>{
+	const x = todos.filter((a)=>{
+		if(a.text.includes(user_search.value.toLowerCase())){
+			return true;
+		}
+	})
+	display_todos(x);
+}
