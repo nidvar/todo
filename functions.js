@@ -17,9 +17,9 @@ const add_todo = ()=>{
 	user_input.value = '';
 }
 
-const display_todos = ()=>{
+const display_todos = (array)=>{
 	display.innerHTML = '';
-	todos.forEach((a)=>{
+	array.forEach((a)=>{
 
 		const w = document.createElement('div');
 		display.appendChild(w);
@@ -33,6 +33,7 @@ const display_todos = ()=>{
 		z.addEventListener('click', ()=>{
 			if(z.checked === true){
 				todo_is_completed(a.id);
+				display_complete_only();
 			} else {
 				todo_is_incomplete(a.id);
 			}
@@ -58,7 +59,7 @@ const display_todos = ()=>{
 		y.addEventListener('click', ()=>{
 			delete_todo(a.id);
 			localStorage.setItem('todos', JSON.stringify(todos));
-			display_todos();
+			display_todos(todos);
 		})
 		y.classList.add('btn');
 		y.classList.add('btn-warning');
@@ -86,4 +87,11 @@ const todo_is_incomplete = (the_id)=>{
 		return a.id === the_id;
 	})
 	todos[x].completed = false;
+}
+
+const display_complete_only = ()=>{
+	const x = todos.filter((a)=>{
+		return a.completed === false
+	})
+	display_todos(x);
 }
