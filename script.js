@@ -10,9 +10,11 @@ const todos = get_todos();
 
 hidden_checkbox.addEventListener('click', ()=>{
 	if(hidden_checkbox.checked === true){
-		display_complete_only();
+		// display_complete_only();
+		search_incompleted();
 	} else {
-		display_todos(todos);
+		// display_todos(todos);
+		search_all();
 	}
 })
 user_search.addEventListener('input', (e)=>{
