@@ -17,6 +17,9 @@ nav {
 	font-size:16px;
 	letter-spacing: 1px;
 }
+a:hover{
+	text-decoration: none;
+}
 .container {
 	max-width:500px;
 	margin:auto;
