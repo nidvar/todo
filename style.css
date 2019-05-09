@@ -1,7 +1,6 @@
 body {
 	margin:0;
 	font-family: 'Raleway', sans-serif;
-	text-align:center;
 }
 h1 {
 	margin:30px;
@@ -21,6 +20,7 @@ nav {
 .container {
 	max-width:500px;
 	margin:auto;
+	text-align:center;
 }
 .make-into-button:hover {
 	cursor: pointer;
