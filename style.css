@@ -10,6 +10,14 @@ nav {
 	height:50px;
 	background-color:black;
 }
+#logo{
+	color:white;
+	margin:0 0 0 10px;
+	padding:16px;
+	font-weight:lighter;
+	font-size:16px;
+	letter-spacing: 1px;
+}
 .container {
 	max-width:500px;
 	margin:auto;
