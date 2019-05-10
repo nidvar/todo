@@ -42,6 +42,7 @@ const display_todos = (array)=>{
 			} else {
 				x.classList.remove('cross-out');
 			}
+			number_of_todos_left();
 		})
 		z.style = 'margin-right:5px;'
 		w.appendChild(z);
@@ -59,11 +60,13 @@ const display_todos = (array)=>{
 			delete_todo(a.id);
 			localStorage.setItem('todos', JSON.stringify(todos));
 			display_todos(todos);
+			number_of_todos_left();
 		})
 		y.classList.add('btn');
 		y.classList.add('btn-warning');
 		y.style = 'margin-left:10px; padding:0 4px 0 4px;'
 		x.appendChild(y);
+		number_of_todos_left();
 	})
 }
 
@@ -114,4 +117,13 @@ const search_all = ()=>{
 		}
 	})
 	display_todos(y);
+}
+
+const number_of_todos_left = ()=>{
+	const x = todos.filter((a)=>{
+		if(a.completed === false){
+			return true
+		}
+	})
+	document.querySelector('.remaining-todos').innerHTML = `You have ${x.length} todos left`;
 }

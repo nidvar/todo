@@ -32,3 +32,4 @@ user_input.addEventListener('keydown', (e)=>{
 	}
 })
 display_todos(todos);
+number_of_todos_left();
