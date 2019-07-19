@@ -29,13 +29,18 @@ const display_todos = (array)=>{
 		z.type = 'checkbox';
 		if(a.completed === true){
 			z.checked = true
+		}else if(a.completed === false){
+			z.checked = false
 		}
 		z.addEventListener('click', ()=>{
-			if(z.checked === true){
-				todo_is_completed(a.id);
-			} else {
-				todo_is_incomplete(a.id);
+			
+			if(z.checked === false){
+				a.completed = false;
+			}else{
+				a.completed = true;
 			}
+
+
 			localStorage.setItem('todos', JSON.stringify(todos));
 			if(a.completed === true){
 				x.classList.add('cross-out');
@@ -43,6 +48,12 @@ const display_todos = (array)=>{
 				x.classList.remove('cross-out');
 			}
 			number_of_todos_left();
+
+			if(hidden_checkbox.checked === true){
+				display_todos(incompleted_todos(search_all()));
+			} else {
+				display_todos(search_all());
+			}
 		})
 		z.style = 'margin-right:5px;'
 		w.appendChild(z);
@@ -57,9 +68,16 @@ const display_todos = (array)=>{
 		const y = document.createElement('button');
 		y.textContent = 'x';
 		y.addEventListener('click', ()=>{
+
 			delete_todo(a.id);
 			localStorage.setItem('todos', JSON.stringify(todos));
-			display_todos(todos);
+
+			if(hidden_checkbox.checked === true){
+				display_todos(incompleted_todos(search_all()));
+			} else {
+				display_todos(search_all());
+			}
+
 			number_of_todos_left();
 		})
 		y.classList.add('btn');
@@ -70,53 +88,25 @@ const display_todos = (array)=>{
 	})
 }
 
+const search_all = ()=>{
+	const x = todos.filter((a)=>{
+		return a.text.includes(document.querySelector('.user-search').value)
+	})
+	return x
+}
+
+const incompleted_todos = (array_of_choice)=>{
+	const x = array_of_choice.filter((a)=>{
+		return a.completed === false
+	})
+	return x
+}
+
 const delete_todo = (the_id)=>{
 	const x = todos.findIndex((a)=>{
 		return a.id === the_id;
 	})
 	todos.splice(x, 1);
-}
-
-const todo_is_completed = (the_id)=>{
-	const x = todos.findIndex((a)=>{
-		return a.id === the_id;
-	})
-	todos[x].completed = true;
-}
-
-const todo_is_incomplete = (the_id)=>{
-	const x = todos.findIndex((a)=>{
-		return a.id === the_id;
-	})
-	todos[x].completed = false;
-}
-
-const display_complete_only = ()=>{
-	const x = todos.filter((a)=>{
-		return a.completed === false
-	})
-	display_todos(x);
-}
-
-const search_incompleted = ()=>{
-	const x = todos.filter((a)=>{
-		return a.completed === false;
-	})
-	const y = x.filter((a)=>{
-		if(a.text.toLowerCase().includes(user_search.value)){
-			return true
-		}
-	})
-	display_todos(y);
-}
-
-const search_all = ()=>{
-	const y = todos.filter((a)=>{
-		if(a.text.toLowerCase().includes(user_search.value)){
-			return true
-		}
-	})
-	display_todos(y);
 }
 
 const number_of_todos_left = ()=>{
