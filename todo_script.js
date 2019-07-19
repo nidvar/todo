@@ -27,7 +27,11 @@ user_search.addEventListener('input', (e)=>{
 user_input.addEventListener('keydown', (e)=>{
 	if(e.keyCode === 13){
 		add_todo();
-		display_todos(todos);
+	if(hidden_checkbox.checked === true){
+		display_todos(incompleted_todos(search_all()));
+	} else {
+		display_todos(search_all());
+	}
 	}
 })
 display_todos(todos);
